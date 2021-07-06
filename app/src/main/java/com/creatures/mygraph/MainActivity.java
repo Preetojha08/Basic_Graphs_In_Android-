@@ -7,12 +7,16 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.charts.BubbleChart;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.BubbleData;
+import com.github.mikephil.charting.data.BubbleDataSet;
+import com.github.mikephil.charting.data.BubbleEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
@@ -29,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     BarChart bar_chart;
     PieChart pie_chart;
     RadarChart radar_chart;
+    BubbleChart bubble_chart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,12 +142,6 @@ public class MainActivity extends AppCompatActivity {
         radar_chart.setData(radar_data);
         radar_chart.animate();
         radar_chart.animateXY(2000,2000);
-
-
-
-
-
-
 
 
 
