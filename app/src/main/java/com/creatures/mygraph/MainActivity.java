@@ -8,12 +8,18 @@ import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.charts.RadarChart;
+import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.data.RadarData;
+import com.github.mikephil.charting.data.RadarDataSet;
+import com.github.mikephil.charting.data.RadarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
@@ -22,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     BarChart bar_chart;
     PieChart pie_chart;
+    RadarChart radar_chart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +91,56 @@ public class MainActivity extends AppCompatActivity {
         //pie_chart.setTransparentCircleRadius(40f); //Transparent Circle Radius
         pie_chart.animateY(2000);
         pie_chart.animate();
+
+        //Radar Chart
+
+        radar_chart=(RadarChart)findViewById(R.id.radar_chart);
+
+        ArrayList<RadarEntry> radar_entry_array_list = new ArrayList<>();
+
+        radar_entry_array_list.add(new RadarEntry(420));
+        radar_entry_array_list.add(new RadarEntry(400));
+        radar_entry_array_list.add(new RadarEntry(500));
+        radar_entry_array_list.add(new RadarEntry(360));
+        radar_entry_array_list.add(new RadarEntry(220));
+
+        ArrayList<RadarEntry> radar_entry_array_list_2 = new ArrayList<>();
+
+        radar_entry_array_list_2.add(new RadarEntry(520));
+        radar_entry_array_list_2.add(new RadarEntry(390));
+        radar_entry_array_list_2.add(new RadarEntry(400));
+        radar_entry_array_list_2.add(new RadarEntry(560));
+        radar_entry_array_list_2.add(new RadarEntry(320));
+
+        RadarDataSet radar_data_set = new RadarDataSet(radar_entry_array_list,"Label 1");
+        radar_data_set.setColor(Color.RED);
+        radar_data_set.setLineWidth(2f);
+        radar_data_set.setDrawHighlightCircleEnabled(true);
+        radar_data_set.setValueTextColor(Color.RED);
+        radar_data_set.setValueTextSize(10f);
+
+        RadarDataSet radar_data_set_2 = new RadarDataSet(radar_entry_array_list_2,"Label 2");
+        radar_data_set_2.setColor(Color.BLUE);
+        radar_data_set_2.setLineWidth(2f);
+        radar_data_set_2.setDrawHighlightCircleEnabled(true);
+        radar_data_set_2.setValueTextColor(Color.BLUE);
+        radar_data_set_2.setValueTextSize(10f);
+
+        RadarData radar_data = new RadarData();
+        radar_data.addDataSet(radar_data_set);
+        radar_data.addDataSet(radar_data_set_2);
+
+        String[] labels = {"2016","2017","2018","2019","2020"};
+        XAxis x_axis = radar_chart.getXAxis();
+        x_axis.setValueFormatter(new IndexAxisValueFormatter(labels));
+
+        radar_chart.setData(radar_data);
+        radar_chart.animate();
+        radar_chart.animateXY(2000,2000);
+
+
+
+
 
 
 
